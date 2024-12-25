@@ -1,6 +1,22 @@
 import * as dotenv from 'dotenv';
 import TelegramBot, { Message } from 'node-telegram-bot-api';
 
+import express from 'express';
+
+// Создаем сервер Express
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Главный маршрут для проверки работоспособности
+app.get('/', (req, res) => {
+  res.send('Bot is running!');
+});
+
+// Запускаем сервер
+app.listen(PORT, () => {
+  console.log(`Пинг-сервер запущен на порту ${PORT}`);
+});
+
 // Загрузка переменных окружения
 dotenv.config();
 
